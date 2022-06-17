@@ -1,3 +1,4 @@
+import { IUser } from './../models/IUser.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,5 +21,9 @@ export class UserService {
 
   public buscarUsuario(id: number) {
     return this.http.get(`${this.url}/${id}`);
+  }
+
+  public cadastrarUsuario(usuario: IUser) {
+    return this.http.post(this.url, usuario);
   }
 }
