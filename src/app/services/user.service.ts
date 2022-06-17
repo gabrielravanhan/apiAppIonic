@@ -17,4 +17,8 @@ export class UserService {
 
     return this.http.get(`${this.url}?page=${pagina}`);
   }
+
+  public buscarUsuario(id: number) {
+    return this.http.get(`${this.url}/${id}`);
+  }
 }
