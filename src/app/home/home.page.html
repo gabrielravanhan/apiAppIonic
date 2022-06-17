@@ -1,11 +1,40 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Blank
+      Usuários
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-item *ngFor="let user of listaUsuarios">
+    <ion-thumbnail slot="start">
+      <img [src]="user.avatar" alt="Foto">
+    </ion-thumbnail>
 
+    <div>
+      <h4>{{ user.first_name + ' ' + user.last_name }}</h4>
+      <p>{{ user.email }}</p>
+    </div>
+
+    <ion-badge color="dark" slot="end">ID: {{ user.id }}</ion-badge>
+  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark" class="ion-text-center">
+    <ion-buttons slot="start" *ngIf="pagina > 1">
+      <ion-button (click)="buscarTodosUsuarios(pagina - 1)">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    Página: {{ pagina }}
+
+    <ion-buttons slot="end" *ngIf="pagina < totalPaginas">
+      <ion-button (click)="buscarTodosUsuarios(pagina + 1)">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
