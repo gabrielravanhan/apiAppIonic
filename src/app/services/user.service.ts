@@ -26,4 +26,8 @@ export class UserService {
   public cadastrarUsuario(usuario: IUser) {
     return this.http.post(this.url, usuario);
   }
+
+  public alterarUsuario(usuario: IUser) {
+    return this.http.put(`${this.url}/${usuario.id}`, usuario);
+  }
 }
